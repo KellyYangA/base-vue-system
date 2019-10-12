@@ -1,0 +1,91 @@
+
+@import '~ant-design-vue/dist/antd.less';
+@import './var';
+
+@import './theme';
+
+html{
+  height:100%;
+  font-size: @font-size-base;
+}
+
+#app{
+  height: 100vh;
+}
+
+.generate-space(220);
+.generate-space(@n, @i: 0) when(@i =< @n) {
+  .generate-space(@n, @i + 1);
+  .f-@{i} {
+    font-size: unit(@i,px);
+  }
+  .m-@{i} {
+    margin: unit(@i,px);
+  }
+  .m-h-@{i} {
+    margin-left: unit(@i,px);
+    margin-right: unit(@i,px);
+  }
+  .m-v-@{i} {
+    margin-top: unit(@i,px);
+    margin-bottom: unit(@i,px);
+  }
+  .m-t-@{i} {
+    margin-top: unit(@i,px);
+  }
+  .m-b-@{i} {
+    margin-bottom: unit(@i,px);
+  }
+  .m-r-@{i} {
+    margin-right: unit(@i,px);
+  }
+  .m-l-@{i} {
+    margin-left: unit(@i,px);
+  }
+  .p-@{i} {
+    padding: unit(@i,px);
+  }
+  .p-h-@{i} {
+    padding-left: unit(@i,px);
+    padding-right: unit(@i,px);
+  }
+  .p-v-@{i} {
+    padding-top: unit(@i,px);
+    padding-bottom: unit(@i,px);
+  }
+  .p-r-@{i} {
+    padding-right: unit(@i,px);
+  }
+  .p-l-@{i} {
+    padding-left: unit(@i,px);
+  }
+  .p-t-@{i} {
+    padding-top: unit(@i,px);
+  }
+  .p-b-@{i} {
+    padding-bottom: unit(@i,px);
+  }
+}
+
+.font-title{
+  color: rgba(0, 0, 0, 0.85);
+}
+.font-body{
+  color: rgba(0, 0, 0, 0.65);
+}
+.font-caption{
+  color: rgba(0, 0, 0, 0.45);
+}
+.font-disabled{
+  color: rgba(0, 0, 0, 0.25);
+}
+.b-white{
+  background: #fff;
+}
+.f-w-b{
+  font-weight: bold;
+}
+.f-w-n{
+  font-weight: normal;
+}
+
