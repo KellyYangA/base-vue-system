@@ -1,5 +1,7 @@
 <template>
-    <div>首页xxx</div>
+    <keep-alive>
+        <router-view/>
+    </keep-alive>
 </template>
 
 <script>

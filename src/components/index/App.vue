@@ -37,13 +37,13 @@
                             <div class="user-center-wrapper ant-dropdown-link">
 <!--                                <img class="user-center-avatar" :src="user.member && user.member.avatar" v-show="user.member && user.member.avatar"/>-->
                                 <div>
-                                    <AIconfont class="user-center-avatar" type="icon-of-touxiang"/>
+                                    <AIconfont class="user-center-avatar" type="icon-of-group"/>
                                    <span class="font-title"> xxx</span>
                                 </div>
                             </div>
                             <a-menu slot="overlay">
                                 <a-menu-item>
-                                    <a><div class="user-center-wrapper-item"><a-icon type="user"/>&nbsp;个人中心</div></a>
+                                    <a><div class="user-center-wrapper-item" @click="() => $router.push({name: 'user'})"><a-icon type="user"/>&nbsp;个人中心</div></a>
                                 </a-menu-item>
                                 <a-menu-item>
                                     <a><div class="user-center-wrapper-item"><a-icon type="setting"/>&nbsp;账户设置</div></a>
@@ -60,11 +60,12 @@
                     <div>
                         <div class="p-v-16 p-h-24 m-t-1 b-white header">
                             <a-breadcrumb>
+                                <a-breadcrumb-item><router-link :to="{path: '/messageStation'}">首页</router-link></a-breadcrumb-item>
                                 <a-breadcrumb-item v-for="(nav, index) in breadCrumbs" :key="index">{{nav.breadcrumbName}}</a-breadcrumb-item>
                             </a-breadcrumb>
                             <span class="f-20 m-t-16 font-title f-w-n" v-if="breadCrumbs[breadCrumbs.length - 1]">{{breadCrumbs[breadCrumbs.length - 1].breadcrumbName}}</span>
                         </div>
-                        <div class="b-white m-24 p-h-32 p-v-24 content">
+                        <div>
                             <router-view/>
                         </div>
                     </div>
@@ -92,13 +93,13 @@
         menus: [
           {
             key: '1',
-            name: '首页',
-            url: '/home',
+            name: '测试模块1',
+            url: '/test',
             icon: 'mail',
             children: [{
               key: '1.1',
               name: '首页2',
-              url: '/messageStation',
+              url: '/home',
               icon: 'calendar',
             }]
           },
@@ -114,13 +115,7 @@
             url: '/childrenStation',
             icon: 'mail',
             children: [
-              {
-                key: '3.1',
-                name: '消息中心',
-                url: '/messageStation4',
-                icon: 'calendar',
-              },
-              {
+                {
                 key: '3.2',
                 name: '站点管理',
                 url: '/childrenStation2',
@@ -143,7 +138,7 @@
               {
                 key: '5.1',
                 name: '消息中心',
-                url: '/childrenStation5',
+                url: '/messageStation',
                 icon: 'calendar',
               },
               {
@@ -153,6 +148,12 @@
                 icon: 'calendar',
               }
             ]
+          },
+          {
+            key: '6',
+            name: '个人中心',
+            url: '/user',
+            icon: 'mail',
           },
         ],
         theme: 'dark',
@@ -188,7 +189,14 @@
         return list
       }
     },
+    mounted() {
+      this.getUser()
+    },
     methods: {
+      async getUser() {
+        const {data, err} = await this.$store.dispatch('getUser', {})
+        console.log(data,err)
+      },
       openChange(val) {
         this.openKeys = val
       },

@@ -1,5 +1,9 @@
 <template>
-    <div>messageStation</div>
+    <baseContainerCard>
+        <div>
+            messageStaion
+        </div>
+    </baseContainerCard>
 </template>
 
 <script>

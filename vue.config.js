@@ -1,6 +1,9 @@
 ﻿
+const path = require('path')
+
 module.exports = {
   productionSourceMap: false,
+  lintOnSave: false,
   publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
   outputDir: 'dist',
   assetsDir: 'static',
@@ -14,6 +17,17 @@ module.exports = {
           '^/proxy': ''
         }
       },
+    }
+  },
+  pluginOptions: {
+    'style-resources-loader': {
+      preProcessor: 'less',
+      patterns: [
+        // 这儿不能使用别名路径
+        path.resolve(__dirname, './src/assets/css/base.less'),
+        path.resolve(__dirname, './src/assets/css/theme.less'),
+        path.resolve(__dirname, './src/assets/css/var.less')
+      ]
     }
   },
   // css: {

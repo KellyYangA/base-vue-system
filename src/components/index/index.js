@@ -12,6 +12,11 @@ const IconFont = Icon.createFromIconfontCN({
 })
 Vue.component(IconFont.name, IconFont)
 
+import baseContainerCard from '@/baseComponents/baseContainerCard'
+import ccCardHeader from '@/baseComponents/ccCardHeader'
+Vue.component('baseContainerCard', baseContainerCard)
+Vue.component('ccCardHeader', ccCardHeader)
+
 /* eslint-disable no-new */
 new Vue({
   router,
