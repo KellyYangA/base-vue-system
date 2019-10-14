@@ -50,7 +50,7 @@
                                 </a-menu-item>
                                 <a-menu-divider />
                                 <a-menu-item>
-                                    <a><div class="user-center-wrapper-item"><a-icon type="logout" />&nbsp;登出</div></a>
+                                    <a><div class="user-center-wrapper-item" @click="logout"><a-icon type="logout"/>&nbsp;登出</div></a>
                                 </a-menu-item>
                             </a-menu>
                         </a-dropdown>
@@ -194,8 +194,8 @@
     },
     methods: {
       async getUser() {
-        const {data, err} = await this.$store.dispatch('getUser', {})
-        console.log(data,err)
+        // const {data, err} = await this.$store.dispatch('getUser', {})
+        // console.log(data, err)
       },
       openChange(val) {
         this.openKeys = val
@@ -218,6 +218,11 @@
       },
       selectMenu(child) {
         this.$router.push({path: child.url})
+      },
+      logout () {
+        console.log('logout')
+        // TODO 异步请求
+        location.href = `${process.env.BASE_URL}login.html?logout`
       },
       handleClick() {}
     }

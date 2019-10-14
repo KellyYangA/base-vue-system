@@ -11,6 +11,7 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   proxyPrefix = '/proxy'    // 开发环境
 }
+
 export const baseConfig = {
   baseURL: proxyPrefix,
   withCredentials: false,
